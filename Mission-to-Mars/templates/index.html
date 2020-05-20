@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission To Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission To Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Mars</a></p>
+    </div>
+
+    <!-- Mars Data -->
+    <div class="row" id="mars-data">
+      <div class="col-md-12">
+        <h4 class="heading">{{mars.title}}</h4> 
+        <h3>{{mars.description}}</h3>
+        <small>{{mars.weather}}</small>
+
+      </div>
+    </div>
+
+  </div>
+  <img src="{{mars.featimg}}">
+  <hr>
+  {{mars.facts|safe}}
+  <hr>
+  <h4>{{mars.title1}}</h4>
+  <img src="{{mars.img_url1}}">
+  <hr>
+  <h4>{{mars.title2}}</h4>
+  <img src="{{mars.img_url2}}">
+  <hr>
+  <h4>{{mars.title3}}</h4>
+  <img src="{{mars.img_url3}}">
+  <hr>
+  <h4>{{mars.title4}}</h4>
+  <img src="{{mars.img_url4}}">
+</body>
+
+</html>
+
