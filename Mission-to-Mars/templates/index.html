@@ -7,6 +7,78 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mission To Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+    h2.hemisphere {
+      text-align: center;
+    }
+
+    img.hemisphere {
+      height: 500px;
+      width: 500px;
+    }
+
+    .current {
+      border-width: 2px;
+      border-radius: 5px;
+      border-style: solid;
+      border-color: gray;
+      padding: 10px;
+    }
+
+    img.featured {
+      height: 500px;
+      width: 700px;
+    }
+
+    @media (max-width: 576px) {
+      img.hemisphere {
+        width: 100px;
+        height: 100px;
+      }
+
+      img.featured {
+        width: 150px;
+        height: 100px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      img.hemisphere {
+        width: 225px;
+        height: 225px;
+      }
+
+      img.featured {
+        width: 500px;
+        height: 400px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      img.hemisphere {
+        width: 425px;
+        height: 425px;
+      }
+
+      img.featured {
+        width: 600px;
+        height: 510px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      img.hemisphere {
+        width: 425px;
+        height: 425px;
+      }
+
+      img.featured {
+        width: 600px;
+        height: 510px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -14,36 +86,54 @@
 
     <div class="jumbotron text-center">
       <h1>Mission To Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Mars</a></p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
     </div>
 
     <!-- Mars Data -->
-    <div class="row" id="mars-data">
-      <div class="col-md-12">
-        <h4 class="heading">{{mars.title}}</h4> 
-        <h3>{{mars.description}}</h3>
-        <small>{{mars.weather}}</small>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h2>Latest Mars News</h2>
+        <h4>{{mars.title}}</h4>
+        <h5>{{mars.description}}</h5>
+      </div>
+    </div>
+    <div class="row" style="padding-bottom: 15px">
+      <div class="col-lg-8 col-md-8 col-sm-8">
+        <h2>Featured Mars Image</h2>
+        <img src="{{mars.featimg}}" alt="Featured Mars Image" class="featured">
 
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-5" style="padding-top: 15px">
+
+        <div class="current">
+          <h4>Current Weather on Mars</h4>
+          <small>{{mars.weather}}</small>
+        </div>
+        <div>
+          <br><br>
+          {{mars.facts|safe}}
+        </div>
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <h2 class="hemisphere">Mars Hemispheres</h2>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      {% for item in mars.img_title %}
+      {% set list1 = item.split('|') %}
+      <div class="col-lg-6 col-md-6 col-sm-7">
+        <img src="{{list1[1]}}" class="hemisphere">
+        <h4>{{list1[0]}}</h4>
+      </div>
+      {% endfor %}
+
+    </div>
   </div>
-  <img src="{{mars.featimg}}">
-  <hr>
-  {{mars.facts|safe}}
-  <hr>
-  <h4>{{mars.title1}}</h4>
-  <img src="{{mars.img_url1}}">
-  <hr>
-  <h4>{{mars.title2}}</h4>
-  <img src="{{mars.img_url2}}">
-  <hr>
-  <h4>{{mars.title3}}</h4>
-  <img src="{{mars.img_url3}}">
-  <hr>
-  <h4>{{mars.title4}}</h4>
-  <img src="{{mars.img_url4}}">
 </body>
 
 </html>
-
